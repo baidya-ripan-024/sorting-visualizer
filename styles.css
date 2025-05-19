@@ -1,0 +1,259 @@
+/* --- CSS Styling --- */
+:root {
+    --primary-bg: rgb(20, 20, 31);           /* Deep indigo */
+    --secondary-bg: rgb(34, 40, 49);         /* Charcoal blue */
+    --text-color: rgb(238, 238, 238);        /* Soft white */
+    --accent-color: rgb(255, 87, 34);        /* Vivid orange for buttons */
+    --bar-color: rgb(0, 230, 118);           /* Bright green for default bars */
+    --bar-compare-color: rgb(255, 234, 0);   /* Vivid yellow for comparisons */
+    --bar-swap-color: rgb(41, 121, 255);     /* Bright blue for swaps */
+    --bar-sorted-color: rgb(156, 39, 176);   /* Vivid purple for sorted bars */
+    --bar-pivot-color: rgb(255, 23, 68);     /* Neon pink-red for pivots */
+    --stop-color: rgb(229, 57, 53);          /* Strong red for stop button */
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: var(--secondary-bg);
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 15px;
+    margin-top: 0;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #ff9800, #00e676, #2979ff, #d500f9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow:
+        0 1px 0 #000;
+}
+
+body, h1, h2, h3, h4, h5, h6, button, input, label, p {
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px 0;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.control-group label {
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+input[type="range"] {
+    width: 150px;
+    appearance: none;
+    height: 8px;
+    background: var(--primary-bg);
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    cursor: grab;
+    border: 2px solid var(--text-color);
+}
+
+.control-btn,
+.sort-btn {
+    background-color: var(--accent-color);
+    color: var(--primary-bg);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+#stopSortBtn {
+    background-color: var(--stop-color);
+    color: white;
+    font-weight: bold;  
+}
+
+#stopSortBtn:hover {
+    background-color: #ff0000;
+    /* Darker red */
+}
+
+.control-btn:hover,
+.sort-btn:hover {
+    background-color: #4da6df;
+    /* slightly darker accent */
+    transform: translateY(-2px);
+}
+
+.control-btn:active,
+.sort-btn:active {
+    transform: translateY(0);
+}
+
+.control-btn:disabled,
+.sort-btn:disabled {
+    background-color: #888;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+#stopSortBtn:disabled {
+    background-color: #b71c1c;
+    /* Darker red when disabled */
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+main.visualizer-container {
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-end;
+    /* Align bars to the bottom */
+    justify-content: center;
+    padding: 20px;
+    background-color: var(--primary-bg);
+}
+
+.bars-container {
+    display: flex;
+    align-items: flex-end;
+    height: 80vh;
+    /* Max height for visualization */
+    max-height: 500px;
+    /* Cap the height */
+    width: 95%;
+    max-width: 1200px;
+    background-color: var(--secondary-bg);
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    /* Hide scrollbar if bars are too many */
+    gap: 1px;
+    /* Small gap between bars */
+}
+
+/* New */
+.bar {
+    flex: 1 1 0;
+    margin: 0 0.5px;
+    background-color: var(--bar-color);
+    transition: height 0.1s ease, background-color 0.1s ease;
+    border-radius: 2px 2px 0 0;
+}
+
+footer {
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+    text-align: center;
+    padding: 15px;
+    font-size: 0.8em;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    margin-top: auto;
+    /* Push footer to the bottom */
+}
+
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .control-group {
+        width: 100%;
+        text-align: center;
+    }
+
+    input[type="range"] {
+        width: 80%;
+    }
+
+    .bars-container {
+        width: 98%;
+        height: 60vh;
+    }
+}
+
+
+/* Light Mode Variables */
+body.light-mode {
+    --primary-bg: #f1f3f5; /* Lightest Gray */
+    --secondary-bg: #ffffff; /* White */
+    --text-color: #495057; /* Dark Gray */
+    --accent-color: #4dabf7; /* Light Blue */
+    --bar-color: #4dabf7; /* Light Blue */
+    --bar-compare-color: #ffa8a8; /* Light Red (for comparison) */
+    --bar-swap-color: #69e57b; /* Light Green (for swap) */
+    --bar-sorted-color: #62b6f7; /* Sky Blue (for sorted) */
+    --bar-pivot-color: #a58af6; /* Light Purple (for pivot) */
+    --stop-color: #fa5252; /* Red */
+}
+
+
+
+/* toggle dark mode */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* github and linkedin icon style */
+footer a {
+    color: var(--accent-color);
+    margin: 0 6px;
+    font-size: 1.4rem;
+    transition: color 0.2s, transform 0.2s;
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+footer a:hover,
+footer a:focus {
+    color: var(--bar-color);
+    transform: scale(1.2);
+}
+
+footer i.fab {
+    vertical-align: middle;
+}
