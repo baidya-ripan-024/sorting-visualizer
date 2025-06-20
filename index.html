@@ -4,15 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sorting visualizer</title>
+    <title>Sorting Visualizer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="sort-favicon.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <header>
-        <h1>Algorithm Visualizer Pro</h1>
+        <h1>Sorting Visualizer Pro</h1>
         <nav class="controls">
             <div class="control-group">
                 <label for="arraySize">Array Size:</label>
@@ -22,16 +23,25 @@
                 <label for="sortingSpeed">Sorting Speed:</label>
                 <input type="range" id="sortingSpeed" min="10" max="300" value="150">
             </div>
+
             <button id="newArrayBtn" class="control-btn">Generate New Array</button>
-            <button id="bubbleSortBtn" class="control-btn sort-btn">Bubble Sort</button>
-            <button id="selectionSortBtn" class="control-btn sort-btn">Selection Sort</button>
-            <button id="insertionSortBtn" class="control-btn sort-btn">Insertion Sort</button>
-            <button id="mergeSortBtn" class="control-btn sort-btn">Merge Sort</button>
-            <button id="quickSortBtn" class="control-btn sort-btn">Quick Sort</button>
-            <button id="heapSortBtn" class="control-btn sort-btn">Heap Sort</button>
+
+            <!-- Dropdown for sorting algorithms -->
+            <div class="control-group">
+                <select id="algorithmSelect" class="control-btn">
+                    <option value="bubble">Bubble Sort</option>
+                    <option value="selection">Selection Sort</option>
+                    <option value="insertion">Insertion Sort</option>
+                    <option value="merge">Merge Sort</option>
+                    <option value="quick">Quick Sort</option>
+                    <option value="heap">Heap Sort</option>
+                </select>
+            </div>
+
+            <button id="startSortBtn" class="control-btn">Start Sorting</button>
             <button id="stopSortBtn" class="control-btn">Stop</button>
 
-            <!-- toggle dark mode -->
+            <!-- Toggle dark mode -->
             <button id="darkModeToggle" class="control-btn" aria-label="Toggle dark mode" title="Toggle dark mode">
                 &#x263C;
                 <span class="visually-hidden">Toggle dark mode</span>
@@ -46,18 +56,16 @@
 
     <footer>
         <p>
-            &copy; © 2025 Ripan Baidya — Crafted with passion ❤️
+            &copy; 2025 Ripan Baidya — Crafted with passion ❤️
             <a href="https://github.com/baidya-ripan-024" target="_blank" rel="noopener" aria-label="GitHub">
                 <i class="fab fa-github"></i>
             </a>
-            <a href="https://www.linkedin.com/in/baidya-ripan024" target="_blank" rel="noopener"
-                aria-label="LinkedIn" style="margin-left:8px;">
+            <a href="https://www.linkedin.com/in/ripanb24/" target="_blank" rel="noopener" aria-label="LinkedIn">
                 <i class="fab fa-linkedin"></i>
             </a>
-            <a href="https://leetcode.com/u/ryan024/" target="_blank" rel="noopener" aria-label="LeetCode"
-                style="margin-left:8px;">
-                <i class="fas fa-trophy"></i>      
-            </a>    
+            <a href="https://leetcode.com/u/ryan024/" target="_blank" rel="noopener" aria-label="LeetCode">
+                <i class="fas fa-trophy"></i>
+            </a>
         </p>
     </footer>
 
