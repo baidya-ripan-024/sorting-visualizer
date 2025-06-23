@@ -1,4 +1,4 @@
-// DOM REFERENCES
+// dom elements
 const barsContainer = document.getElementById("bars-container");
 const newArrayBtn = document.getElementById("newArrayBtn");
 const arraySizeSlider = document.getElementById("arraySize");
@@ -10,11 +10,11 @@ const darkModeToggle = document.getElementById("darkModeToggle");
 const body = document.body;
 
 // global variables
-let array = [];                                 // underlying data
+let array = [];                                 
 let arraySize = parseInt(arraySizeSlider.value, 10);
-let animationSpeedMs = 300 - parseInt(sortingSpeedSlider.value, 10); // higher slider → faster anim
-let isSorting = false;                              // flag to lock UI
-let stopSorting = false;                              // cooperative cancel flag
+let animationSpeedMs = 300 - parseInt(sortingSpeedSlider.value, 10); 
+let isSorting = false;                              
+let stopSorting = false;                              
 
 // utility functions
 function disableControls() {
@@ -114,7 +114,7 @@ async function bubbleSort() {
     array = arr;
 }
 
-// SELECTION SORT
+// selection sort
 async function selectionSort() {
     const arr = [...array];
     const bars = document.querySelectorAll('.bar');
@@ -140,8 +140,7 @@ async function selectionSort() {
     array = arr;
 }
 
-// --------------------------------------------------
-// INSERTION SORT
+// insertion sort
 async function insertionSort() {
     const arr = [...array];
     const bars = document.querySelectorAll('.bar');
@@ -170,8 +169,7 @@ async function insertionSort() {
     array = arr;
 }
 
-// --------------------------------------------------
-// MERGE SORT
+// merge sort
 async function mergeSort() {
     const bars = document.querySelectorAll('.bar');
 
@@ -214,8 +212,7 @@ async function mergeSort() {
     await mergeRec(array, 0, array.length - 1);
 }
 
-// --------------------------------------------------
-// QUICK SORT
+// quick sort
 async function quickSortInitialCall() {
     await quickSort(array, 0, array.length - 1, document.querySelectorAll('.bar'));
 }
@@ -251,8 +248,7 @@ async function partition(arr, low, high, bars) {
     return i + 1;
 }
 
-// --------------------------------------------------
-// HEAP SORT
+// heap sort
 async function heapSort() {
     const arr = [...array];
     const bars = document.querySelectorAll('.bar');
@@ -283,8 +279,7 @@ async function heapify(arr, n, i, bars) {
     }
 }
 
-// --------------------------------------------------
-// EVENT BINDINGS
+// event binding
 // new array on load
 window.addEventListener('DOMContentLoaded', () => {
     // apply saved theme
@@ -320,8 +315,4 @@ startSortBtn.addEventListener('click', async () => {
     enableControls();
 });
 
-darkModeToggle.addEventListener('click', () => {
-    body.classList.toggle('light-mode');
-    localStorage.setItem('theme', body.classList.contains('light-mode') ? 'light' : 'dark');
-    resetBarColors();
-});
+
